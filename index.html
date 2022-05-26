@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="MyController">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Angular</title>
+    <link
+      rel="stylesheet"
+      media="screen"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"
+    />
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
+    <script type="text/javascript" src="page/app.js"></script>
+  </head>
+  <body>
+    <h1>Hi {{name}}</h1>
+    <h1>{{age}}</h1>
+    <h1>{{email}}</h1>
+    <h2>{{address}}</h2>
+    <h1>{{phone}}</h1>
+
+    <!-- // 1 số Filter cơ bản -->
+    <h1>Hello {{name|uppercase}}</h1>
+    <h3>Money: {{money|currency:"":0}}VNĐ</h3>
+    <h3>Birth: {{my_day | date:"dd/MM/yyyy"}}</h3>
+
+    <!-- sử dụng ng-repeat giống như vòng for để duyệt mảng -->
+    <!-- //Bộ lọc filter -->
+    <input type="text" class="forrm-control" ng-model="tk" />
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tr ng-repeat="d in data | filter:tk">
+        <td>{{d.id}}</td>
+        <td>{{d.name}}</td>
+        <td>{{d.age}}</td>
+        <td>{{d.address}}</td>
+        <td>{{d.email}}</td>
+      </tr>
+    </table>
+    <!-- <ol>
+        <li ng-repeat="d in data | filter:tk">{{d.name}}</li>
+    </ol> -->
+
+    <!-- Ràng buộc dữ liệu 2 chiều hay còn gọi là two way databinding -->
+    <!-- ng-change thay đổi
+    ng-blur : đưa chuột vào rồi nháy chuột ra ngoài nó sẽ bật sự kiện luôn
+    ng-hover -->
+    <input type="text" ng-model="name" ng-change="demoClick()" placeholder="" />
+
+    <button type="button" class="btn btn-primary" ng-click="demoClick()">
+      Click
+    </button>
+  </body>
+</html>
+
+<!-- Latest compiled and minified CSS & JS -->
